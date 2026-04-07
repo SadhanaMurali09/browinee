@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Choco Bliss | Freshly Baked Happiness</title>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <!-- Icons -->
+    <link href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/regular/style.css" rel="stylesheet">
+    <link href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/fill/style.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+    <!-- CSS-only Toggles -->
+    <input type="checkbox" id="cart-toggle-check" class="hidden-toggle">
+    <input type="checkbox" id="mobile-menu-check" class="hidden-toggle">
+
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo">
+                <i class="ph-fill ph-cookie"></i>
+                Choco Bliss
+            </a>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#features">Features</a></li>
+                <li><a href="#shop">Shop</a></li>
+                <li><a href="#about">About</a></li>
+            </ul>
+            <div class="nav-icons">
+                <label for="cart-toggle-check" class="cart-btn">
+                    <i class="ph ph-shopping-cart"></i>
+                    <span class="cart-badge">2</span>
+                </label>
+                <label for="mobile-menu-check" class="mobile-menu-btn">
+                    <i class="ph ph-list"></i>
+                </label>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu Overlay -->
+    <div class="mobile-menu">
+        <div class="mobile-menu-close">
+            <label for="mobile-menu-check"><i class="ph ph-x"></i></label>
+        </div>
+        <ul>
+            <li><a href="#home" class="mobile-link">Home</a></li>
+            <li><a href="#features" class="mobile-link">Features</a></li>
+            <li><a href="#shop" class="mobile-link">Shop</a></li>
+            <li><a href="#about" class="mobile-link">About</a></li>
+        </ul>
+    </div>
+
+    <!-- Hero Section -->
+    <header class="hero" id="home">
+        <div class="hero-content">
+            <span class="hero-subtitle">Handcrafted with Love</span>
+            <h1>Freshly Baked <br><span class="text-accent">Happiness</span> in Every Bite.</h1>
+            <p>Indulge in our decadent, fudgy, and absolutely irresistible brownies. Baked fresh daily using premium
+                cocoa.</p>
+            <div class="hero-buttons">
+                <a href="#shop" class="btn btn-primary">Shop Now</a>
+                <a href="#about" class="btn btn-secondary">Our Story</a>
+            </div>
+        </div>
+        <div class="hero-image-wrapper">
+            <div class="blob-bg"></div>
+            <img src="https://images.unsplash.com/photo-1606313564200-e75d5e30476c?q=80&w=1200&auto=format&fit=crop"
+                alt="Delicious stack of fudgy brownies" class="hero-img">
+        </div>
+    </header>
+
+    <!-- Features Section -->
+    <section class="features" id="features">
+        <div class="container section-header">
+            <h2>Why Choose us?</h2>
+            <p>We believe in delivering nothing but perfection.</p>
+        </div>
+        <div class="features-grid container">
+            <div class="feature-card">
+                <div class="feature-icon"><i class="ph ph-plant"></i></div>
+                <h3>Fresh Ingredients</h3>
+                <p>We use only the finest, farm-fresh ingredients to craft every single brownie.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon"><i class="ph ph-clock-countdown"></i></div>
+                <h3>Same Day Delivery</h3>
+                <p>Craving something sweet? Get your warm brownies delivered the very same day.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon"><i class="ph ph-hand-heart"></i></div>
+                <h3>Handmade with Love</h3>
+                <p>Every brownie is carefully mixed, baked, and decorated by hand.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon"><i class="ph ph-medal"></i></div>
+                <h3>100% Quality</h3>
+                <p>Unmatched fudginess and rich chocolate flavor in every bite guaranteed.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Shop / Brownie Collection Section -->
+    <section class="shop" id="shop">
+        <div class="container section-header">
+            <span class="subtitle">Our Selection</span>
+            <h2>The Brownie Collection</h2>
+            <p>Discover our range of mouth-watering brownie flavors.</p>
+        </div>
+        <div class="products-grid container" id="products-container">
+
+            <!-- Product 1 -->
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1606313564200-e75d5e30476c?q=80&w=600&auto=format&fit=crop"
+                        alt="Classic Chocolate Brownie">
+                    <div class="product-overlay">
+                        <label for="cart-toggle-check" class="btn btn-primary add-to-cart-btn"><i
+                                class="ph ph-shopping-cart"></i> Add to Cart</label>
+                    </div>
+                </div>
+                <div class="product-info">
+                    <h3>Classic Chocolate Brownie</h3>
+                    <div class="price-row">
+                        <span class="product-price">$4.50</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product 2 -->
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1599599810769-bcde5a160d32?q=80&w=600&auto=format&fit=crop"
+                        alt="Fudge Brownie">
+                    <div class="product-overlay">
+                        <label for="cart-toggle-check" class="btn btn-primary add-to-cart-btn"><i
+                                class="ph ph-shopping-cart"></i> Add to Cart</label>
+                    </div>
+                </div>
+                <div class="product-info">
+                    <h3>Fudge Brownie</h3>
+                    <div class="price-row">
+                        <span class="product-price">$4.99</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product 3 -->
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1621303837174-89787a7d4729?q=80&w=600&auto=format&fit=crop"
+                        alt="Walnut Brownie">
+                    <div class="product-overlay">
+                        <label for="cart-toggle-check" class="btn btn-primary add-to-cart-btn"><i
+                                class="ph ph-shopping-cart"></i> Add to Cart</label>
+                    </div>
+                </div>
+                <div class="product-info">
+                    <h3>Walnut Brownie</h3>
+                    <div class="price-row">
+                        <span class="product-price">$5.50</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product 4 -->
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1600891964092-4316c288032e?q=80&w=600&auto=format&fit=crop"
+                        alt="Oreo Brownie">
+                    <div class="product-overlay">
+                        <label for="cart-toggle-check" class="btn btn-primary add-to-cart-btn"><i
+                                class="ph ph-shopping-cart"></i> Add to Cart</label>
+                    </div>
+                </div>
+                <div class="product-info">
+                    <h3>Oreo Brownie</h3>
+                    <div class="price-row">
+                        <span class="product-price">$5.25</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product 5 -->
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1587314168485-3236d6710814?q=80&w=600&auto=format&fit=crop"
+                        alt="Caramel Brownie">
+                    <div class="product-overlay">
+                        <label for="cart-toggle-check" class="btn btn-primary add-to-cart-btn"><i
+                                class="ph ph-shopping-cart"></i> Add to Cart</label>
+                    </div>
+                </div>
+                <div class="product-info">
+                    <h3>Caramel Brownie</h3>
+                    <div class="price-row">
+                        <span class="product-price">$5.75</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product 6 -->
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1550617931-e17a7b70dce2?q=80&w=600&auto=format&fit=crop"
+                        alt="Red Velvet Brownie">
+                    <div class="product-overlay">
+                        <label for="cart-toggle-check" class="btn btn-primary add-to-cart-btn"><i
+                                class="ph ph-shopping-cart"></i> Add to Cart</label>
+                    </div>
+                </div>
+                <div class="product-info">
+                    <h3>Red Velvet Brownie</h3>
+                    <div class="price-row">
+                        <span class="product-price">$6.00</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product 7 -->
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1606313564200-e75d5e30476c?q=80&w=600&auto=format&fit=crop&crop=bottom"
+                        alt="Nutella Brownie">
+                    <div class="product-overlay">
+                        <label for="cart-toggle-check" class="btn btn-primary add-to-cart-btn"><i
+                                class="ph ph-shopping-cart"></i> Add to Cart</label>
+                    </div>
+                </div>
+                <div class="product-info">
+                    <h3>Nutella Brownie</h3>
+                    <div class="price-row">
+                        <span class="product-price">$5.90</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product 8 -->
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1515037893149-de7f840978e2?q=80&w=600&auto=format&fit=crop"
+                        alt="Cheesecake Brownie">
+                    <div class="product-overlay">
+                        <label for="cart-toggle-check" class="btn btn-primary add-to-cart-btn"><i
+                                class="ph ph-shopping-cart"></i> Add to Cart</label>
+                    </div>
+                </div>
+                <div class="product-info">
+                    <h3>Cheesecake Brownie</h3>
+                    <div class="price-row">
+                        <span class="product-price">$6.25</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product 9 -->
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1624353365286-3f8d62daad51?q=80&w=600&auto=format&fit=crop"
+                        alt="Peanut Butter Brownie">
+                    <div class="product-overlay">
+                        <label for="cart-toggle-check" class="btn btn-primary add-to-cart-btn"><i
+                                class="ph ph-shopping-cart"></i> Add to Cart</label>
+                    </div>
+                </div>
+                <div class="product-info">
+                    <h3>Peanut Butter Brownie</h3>
+                    <div class="price-row">
+                        <span class="product-price">$5.50</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product 10 -->
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1599599810769-bcde5a160d32?q=80&w=600&auto=format&fit=crop&crop=bottom"
+                        alt="Dark Chocolate Brownie">
+                    <div class="product-overlay">
+                        <label for="cart-toggle-check" class="btn btn-primary add-to-cart-btn"><i
+                                class="ph ph-shopping-cart"></i> Add to Cart</label>
+                    </div>
+                </div>
+                <div class="product-info">
+                    <h3>Dark Chocolate Brownie</h3>
+                    <div class="price-row">
+                        <span class="product-price">$4.75</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product 11 -->
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1621303837174-89787a7d4729?q=80&w=600&auto=format&fit=crop&crop=edges"
+                        alt="Lotus Biscoff Brownie">
+                    <div class="product-overlay">
+                        <label for="cart-toggle-check" class="btn btn-primary add-to-cart-btn"><i
+                                class="ph ph-shopping-cart"></i> Add to Cart</label>
+                    </div>
+                </div>
+                <div class="product-info">
+                    <h3>Lotus Biscoff Brownie</h3>
+                    <div class="price-row">
+                        <span class="product-price">$6.50</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product 12 -->
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1587314168485-3236d6710814?q=80&w=600&auto=format&fit=crop"
+                        alt="S'mores Brownie">
+                    <div class="product-overlay">
+                        <label for="cart-toggle-check" class="btn btn-primary add-to-cart-btn"><i
+                                class="ph ph-shopping-cart"></i> Add to Cart</label>
+                    </div>
+                </div>
+                <div class="product-info">
+                    <h3>S'mores Brownie</h3>
+                    <div class="price-row">
+                        <span class="product-price">$5.95</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="container about-wrapper">
+            <div class="about-image">
+                <img src="https://images.unsplash.com/photo-1549590143-d5855148a9d5?q=80&w=800&auto=format&fit=crop"
+                    alt="Baking brownies">
+            </div>
+            <div class="about-content">
+                <span class="subtitle">Our Story</span>
+                <h2>How Choco Bliss Began</h2>
+                <p>What started as a small passion project in a home kitchen has grown into a beloved brand. We were on
+                    a simple mission: to create the ultimately fudgy, deeply chocolatey brownie that brings a moment of
+                    pure bliss to anyone who tastes it.</p>
+                <p>Today, we continue that tradition, using the finest Belgian chocolate, organic butter, and a whole
+                    lot of love. Welcome to our family.</p>
+                <a href="#shop" class="btn btn-primary mt-4">Taste the Magic</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials">
+        <div class="container section-header">
+            <span class="subtitle">Testimonials</span>
+            <h2>Sweet Words</h2>
+            <p>See what our wonderful customers are saying about us.</p>
+        </div>
+        <div class="testimonials-grid container">
+            <div class="review-card">
+                <div class="review-stars">
+                    <i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i
+                        class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i>
+                </div>
+                <p class="review-text">"The Red Velvet brownie is out of this world! So moist and rich, I literally
+                    ordered an entire box the next day."</p>
+                <span class="review-author">- Sarah Jenkins</span>
+            </div>
+            <div class="review-card">
+                <div class="review-stars">
+                    <i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i
+                        class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i>
+                </div>
+                <p class="review-text">"Best brownies in town, hands down. The packaging was beautiful and they arrived
+                    still warm!"</p>
+                <span class="review-author">- Michael R.</span>
+            </div>
+            <div class="review-card">
+                <div class="review-stars">
+                    <i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i
+                        class="ph-fill ph-star"></i><i class="ph-fill ph-star-half"></i>
+                </div>
+                <p class="review-text">"Choco Bliss is my go-to for gifts. My friends always rave about the Walnut
+                    Brownie. Highly recommend!"</p>
+                <span class="review-author">- Emily T.</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container footer-grid">
+            <div class="footer-brand">
+                <a href="#" class="logo footer-logo">
+                    <i class="ph-fill ph-cookie"></i>
+                    Choco Bliss
+                </a>
+                <p>Freshly baked happiness delivered right to your door. Indulge in perfection.</p>
+            </div>
+            <div class="footer-links">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#shop">Shop</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#features">Features</a></li>
+                </ul>
+            </div>
+            <div class="footer-contact">
+                <h3>Contact Us</h3>
+                <ul>
+                    <li><i class="ph ph-envelope"></i> hello@chocobliss.com</li>
+                    <li><i class="ph ph-phone"></i> +1 (555) 123-4567</li>
+                    <li><i class="ph ph-map-pin"></i> 123 Sweet Ave, NY</li>
+                </ul>
+            </div>
+            <div class="footer-social">
+                <h3>Follow Us</h3>
+                <div class="social-icons">
+                    <a href="#"><i class="ph ph-instagram-logo"></i></a>
+                    <a href="#"><i class="ph ph-facebook-logo"></i></a>
+                    <a href="#"><i class="ph ph-twitter-logo"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Choco Bliss. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Cart Overlay & Sidebar (CSS Controlled) -->
+    <label for="cart-toggle-check" class="cart-overlay"></label>
+    <div class="cart-sidebar">
+        <div class="cart-header">
+            <h2>Your Cart</h2>
+            <label for="cart-toggle-check" class="close-cart"><i class="ph ph-x"></i></label>
+        </div>
+        <div class="cart-items">
+            <!-- Mockup Items for CSS-only display -->
+            <div class="cart-item">
+                <img src="https://images.unsplash.com/photo-1606313564200-e75d5e30476c?q=80&w=150&auto=format&fit=crop"
+                    alt="Classic Brownie">
+                <div class="cart-item-details">
+                    <h4>Classic Chocolate Brownie</h4>
+                    <span class="cart-item-price">$4.50</span>
+                    <div class="cart-quantity-controls">
+                        <button class="qty-btn"><i class="ph ph-minus"></i></button>
+                        <span>1</span>
+                        <button class="qty-btn"><i class="ph ph-plus"></i></button>
+                    </div>
+                </div>
+                <button class="cart-item-remove" title="Remove Item"><i class="ph ph-trash"></i></button>
+            </div>
+            <div class="cart-item">
+                <img src="https://images.unsplash.com/photo-1621303837174-89787a7d4729?q=80&w=150&auto=format&fit=crop"
+                    alt="Walnut Brownie">
+                <div class="cart-item-details">
+                    <h4>Walnut Brownie</h4>
+                    <span class="cart-item-price">$5.50</span>
+                    <div class="cart-quantity-controls">
+                        <button class="qty-btn"><i class="ph ph-minus"></i></button>
+                        <span>1</span>
+                        <button class="qty-btn"><i class="ph ph-plus"></i></button>
+                    </div>
+                </div>
+                <button class="cart-item-remove" title="Remove Item"><i class="ph ph-trash"></i></button>
+            </div>
+        </div>
+        <div class="cart-footer">
+            <div class="cart-total">
+                <span>Total:</span>
+                <span>$10.00</span>
+            </div>
+            <button class="btn btn-primary w-100 checkout-btn">Proceed to Checkout</button>
+        </div>
+    </div>
+
+</body>
+
+</html>

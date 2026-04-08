@@ -10,6 +10,7 @@ copy "C:\Users\sadha\.gemini\antigravity\brain\8330c740-e159-4b43-885a-03955347b
 copy "C:\Users\sadha\.gemini\antigravity\brain\8330c740-e159-4b43-885a-03955347b6be\biscoff_brownie_1775567543344.png" "assets\images\biscoff_brownie.png"
 copy "C:\Users\sadha\.gemini\antigravity\brain\8330c740-e159-4b43-885a-03955347b6be\smores_brownie_1775569226656.png" "assets\images\smores_brownie.png"
 copy "C:\Users\sadha\.gemini\antigravity\brain\8330c740-e159-4b43-885a-03955347b6be\baking_brownies_1775567569128.png" "assets\images\baking_brownies.png"
+copy "C:\Users\sadha\.gemini\antigravity\brain\e867ccee-b72d-4949-a6e9-941f2f93286a\kitkat_brownie_1775645693828.png" "assets\images\kitkat_brownie.png"
 
 echo Done! The images are now local to your project.
 pause

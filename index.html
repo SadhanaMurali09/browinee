@@ -16,6 +16,7 @@
     <link href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/fill/style.css" rel="stylesheet">
 
     <link rel="stylesheet" href="styles.css?v=2">
+    <script src="script.js" defer></script>
 </head>
 
 <body>
@@ -79,7 +80,7 @@
         </div>
         <div class="hero-image-wrapper">
             <div class="blob-bg"></div>
-            <img src="https://images.unsplash.com/photo-1606313564200-e75d5e30476c?q=80&w=1200&auto=format&fit=crop"
+            <img src="assets/fudgebrownies.webp"
                 alt="Delicious stack of fudgy brownies" class="hero-img">
         </div>
     </header>
@@ -126,8 +127,7 @@
             <!-- Product 1 -->
             <div class="product-card">
                 <div class="product-image">
-                    <img src="https://images.unsplash.com/photo-1606313564200-e75d5e30476c?q=80&w=600&auto=format&fit=crop"
-                        alt="Classic Chocolate Brownie">
+                    <img src="assets/classic chocolate browine.webp" alt="Classic Chocolate Brownie">
                     <div class="product-overlay">
                         <label for="cart-toggle-check" class="btn btn-primary add-to-cart-btn"><i
                                 class="ph ph-shopping-cart"></i> Add to Cart</label>
@@ -338,9 +338,6 @@
                 </div>
             </div>
 
-        
-            </div>
-
         </div>
     </section>
 
@@ -451,39 +448,12 @@
             <label for="cart-toggle-check" class="close-cart"><i class="ph ph-x"></i></label>
         </div>
         <div class="cart-items">
-            <!-- Mockup Items for CSS-only display -->
-            <div class="cart-item">
-                <img src="https://images.unsplash.com/photo-1606313564200-e75d5e30476c?q=80&w=150&auto=format&fit=crop"
-                    alt="Classic Brownie">
-                <div class="cart-item-details">
-                    <h4>Classic Chocolate Brownie</h4>
-                    <span class="cart-item-price">$4.50</span>
-                    <div class="cart-quantity-controls">
-                        <button class="qty-btn"><i class="ph ph-minus"></i></button>
-                        <span>1</span>
-                        <button class="qty-btn"><i class="ph ph-plus"></i></button>
-                    </div>
-                </div>
-                <button class="cart-item-remove" title="Remove Item"><i class="ph ph-trash"></i></button>
-            </div>
-            <div class="cart-item">
-                <img src="assets/images/walnut_brownie.jpg" alt="Walnut Brownie">
-                <div class="cart-item-details">
-                    <h4>Walnut Brownie</h4>
-                    <span class="cart-item-price">$5.50</span>
-                    <div class="cart-quantity-controls">
-                        <button class="qty-btn"><i class="ph ph-minus"></i></button>
-                        <span>1</span>
-                        <button class="qty-btn"><i class="ph ph-plus"></i></button>
-                    </div>
-                </div>
-                <button class="cart-item-remove" title="Remove Item"><i class="ph ph-trash"></i></button>
-            </div>
+            <div class="cart-empty">Your cart is empty. Add some brownies to get started.</div>
         </div>
         <div class="cart-footer">
             <div class="cart-total">
                 <span>Total:</span>
-                <span>$10.00</span>
+                <span>$0.00</span>
             </div>
             <button class="btn btn-primary w-100 checkout-btn">Proceed to Checkout</button>
         </div>

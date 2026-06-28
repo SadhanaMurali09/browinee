@@ -1059,6 +1059,16 @@ section {
     gap: 1.5rem;
 }
 
+.cart-empty {
+    margin: auto 0;
+    padding: 2rem;
+    border: 1px dashed var(--glass-border);
+    border-radius: var(--radius-md);
+    text-align: center;
+    color: var(--color-text-secondary);
+    background-color: rgba(255,255,255,0.02);
+}
+
 .cart-item {
     display: flex;
     gap: 1.25rem;
@@ -1170,6 +1180,36 @@ section {
     background: var(--color-text-muted);
 }
 
+/* Toast Notification */
+.toast {
+  position: fixed;
+  top: 100px;
+  right: -300px;
+  background: linear-gradient(135deg, #E2AD52, #BA8529);
+  color: #060403;
+  padding: 15px 25px;
+  border-radius: 50px;
+  font-weight: 700;
+  box-shadow: 0 10px 25px rgba(226, 173, 82, 0.4);
+  transition: 0.5s;
+  z-index: 5000;
+}
+
+.toast.show {
+  right: 30px;
+}
+
+/* Product Animation */
+.product-card {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: all 0.8s ease;
+}
+
+.product-card.show-card {
+  opacity: 1;
+  transform: translateY(0);
+}
 /* =========================================
    RESPONSIVE MEDIA QUERIES
    ========================================= */

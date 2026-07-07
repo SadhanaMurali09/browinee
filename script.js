@@ -1,11 +1,98 @@
 const cartToggle = document.getElementById("cart-toggle-check");
-const addToCartBtns = document.querySelectorAll(".add-to-cart-btn");
 const cartBadge = document.querySelector(".cart-badge");
 const cartItemsContainer = document.querySelector(".cart-items");
 const cartTotalValue = document.querySelector(".cart-total span:last-child");
 const navbar = document.querySelector(".navbar");
+const productsContainer = document.getElementById("products-container");
+const checkoutBtn = document.querySelector(".checkout-btn");
 
 let cartItems = [];
+let products = [
+  {
+    id: 1,
+    name: 'Classic Chocolate Brownie',
+    price: 4.5,
+    image: '/assets/classic chocolate browine.webp',
+    alt: 'Classic Chocolate Brownie'
+  },
+  {
+    id: 2,
+    name: 'Fudge Brownie',
+    price: 4.99,
+    image: '/assets/fudgebrownies.webp',
+    alt: 'Fudge Brownie'
+  },
+  {
+    id: 3,
+    name: 'Walnut Brownie',
+    price: 5.5,
+    image: '/assets/walnut_brownie_01.png',
+    alt: 'Walnut Brownie'
+  },
+  {
+    id: 4,
+    name: 'Oreo Brownie',
+    price: 5.25,
+    image: '/assets/oreo browinee.jpg',
+    alt: 'Oreo Brownie'
+  },
+  {
+    id: 5,
+    name: 'Caramel Brownie',
+    price: 5.75,
+    image: '/assets/caremel browie.jpg',
+    alt: 'Caramel Brownie'
+  },
+  {
+    id: 6,
+    name: 'Red Velvet Brownie',
+    price: 6.0,
+    image: 'https://images.unsplash.com/photo-1550617931-e17a7b70dce2?q=80&w=600&auto=format&fit=crop',
+    alt: 'Red Velvet Brownie'
+  },
+  {
+    id: 7,
+    name: 'Nutella Brownie',
+    price: 5.9,
+    image: 'https://images.unsplash.com/photo-1606313564200-e75d5e30476c?q=80&w=600&auto=format&fit=crop&crop=bottom',
+    alt: 'Nutella Brownie'
+  },
+  {
+    id: 8,
+    name: 'Cheesecake Brownie',
+    price: 6.25,
+    image: 'https://images.unsplash.com/photo-1515037893149-de7f840978e2?q=80&w=600&auto=format&fit=crop',
+    alt: 'Cheesecake Brownie'
+  },
+  {
+    id: 9,
+    name: 'Peanut Butter Brownie',
+    price: 5.5,
+    image: 'https://images.unsplash.com/photo-1624353365286-3f8d62daad51?q=80&w=600&auto=format&fit=crop',
+    alt: 'Peanut Butter Brownie'
+  },
+  {
+    id: 10,
+    name: 'Dark Chocolate Brownie',
+    price: 4.75,
+    image: '/assets/darkchocolate.webp',
+    alt: 'Dark Chocolate Brownie'
+  },
+  {
+    id: 11,
+    name: 'Lotus Biscoff Brownie',
+    price: 6.5,
+    image: '/assets/lotus biscoff browinee.webp',
+    alt: 'Lotus Biscoff Brownie'
+  },
+  {
+    id: 12,
+    name: "S'mores Brownie",
+    price: 5.95,
+    image: "/assets/s'mores browine.webp",
+    alt: "S'mores Brownie"
+  }
+];
 
 function formatCurrency(value) {
   return value.toLocaleString("en-IN", {
@@ -14,18 +101,33 @@ function formatCurrency(value) {
   });
 }
 
-function getProductDetails(button) {
-  const card = button.closest(".product-card");
-  const image = card.querySelector(".product-image img");
-  const name = card.querySelector("h3").textContent.trim();
-  const price = parseFloat(card.querySelector(".product-price").textContent.replace("$", ""));
+function renderProducts(productList) {
+  if (!productsContainer) return;
 
-  return {
-    name,
-    price,
-    image: image.src,
-    alt: image.alt,
-  };
+  productsContainer.innerHTML = productList
+    .map(
+      (product) => `
+        <div class="product-card">
+          <div class="product-image">
+            <img src="${product.image}" alt="${product.alt}">
+            <div class="product-overlay">
+              <button class="btn btn-primary add-to-cart-btn" data-product-id="${product.id}">
+                <i class="ph ph-shopping-cart"></i> Add to Cart
+              </button>
+            </div>
+          </div>
+          <div class="product-info">
+            <h3>${product.name}</h3>
+            <div class="price-row">
+              <span class="product-price">$${product.price.toFixed(2)}</span>
+            </div>
+          </div>
+        </div>
+      `
+    )
+    .join("");
+
+  observeCards();
 }
 
 function renderCart() {
@@ -113,22 +215,80 @@ function showToast(message) {
   }, 2000);
 }
 
+async function loadProducts() {
+  try {
+    const response = await fetch("/api/products");
+    const data = await response.json();
+    if (Array.isArray(data) && data.length > 0) {
+      products = data;
+    }
+    renderProducts(products);
+  } catch (error) {
+    console.error("Could not load products from backend:", error);
+    renderProducts(products);
+    showToast("Using local product list.");
+  }
+}
+
 function initCart() {
-  addToCartBtns.forEach((btn) => {
-    btn.addEventListener("click", (event) => {
+  if (productsContainer) {
+    productsContainer.addEventListener("click", (event) => {
+      const button = event.target.closest(".add-to-cart-btn");
+      if (!button) return;
+
       event.preventDefault();
-      addToCart(getProductDetails(btn));
+      const productId = Number(button.dataset.productId);
+      const selectedProduct = products.find((product) => product.id === productId);
+
+      if (selectedProduct) {
+        addToCart(selectedProduct);
+      }
     });
-  });
+  }
 
-  cartItemsContainer.addEventListener("click", (event) => {
-    const control = event.target.closest("[data-action]");
-    if (!control) return;
+  if (cartItemsContainer) {
+    cartItemsContainer.addEventListener("click", (event) => {
+      const control = event.target.closest("[data-action]");
+      if (!control) return;
 
-    updateCartItem(control.dataset.name, control.dataset.action);
-  });
+      updateCartItem(control.dataset.name, control.dataset.action);
+    });
+  }
+
+  if (checkoutBtn) {
+    checkoutBtn.addEventListener("click", async () => {
+      if (cartItems.length === 0) {
+        showToast("Your cart is empty.");
+        return;
+      }
+
+      try {
+        const response = await fetch("/api/checkout", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ items: cartItems })
+        });
+
+        const result = await response.json();
+        showToast(result.message || "Order placed successfully");
+        cartItems = [];
+        renderCart();
+      } catch (error) {
+        console.error("Checkout failed:", error);
+        showToast("Checkout failed. Please try again.");
+      }
+    });
+  }
 
   renderCart();
+}
+
+function observeCards() {
+  const cards = document.querySelectorAll(".product-card");
+  cards.forEach((card) => {
+    card.classList.remove("show-card");
+    observer.observe(card);
+  });
 }
 
 window.addEventListener("scroll", () => {
@@ -141,7 +301,6 @@ window.addEventListener("scroll", () => {
   }
 });
 
-const cards = document.querySelectorAll(".product-card");
 const observer = new IntersectionObserver((entries) => {
   entries.forEach((entry) => {
     if (entry.isIntersecting) {
@@ -150,8 +309,5 @@ const observer = new IntersectionObserver((entries) => {
   });
 });
 
-cards.forEach((card) => {
-  observer.observe(card);
-});
-
 initCart();
+loadProducts();

@@ -1,0 +1,13 @@
+{
+  "name": "browniee",
+  "version": "1.0.0",
+  "description": "Brownie shop frontend with Express backend",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.19.2"
+  }
+}

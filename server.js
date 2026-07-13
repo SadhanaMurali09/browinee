@@ -5,6 +5,20 @@ const app = express();
 const PORT = Number(process.env.PORT) || 3000;
 
 app.use(express.json());
+app.use((req, res, next) => {
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Methods', 'GET,POST,OPTIONS');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+  next();
+});
+
+app.options('*', (req, res) => {
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Methods', 'GET,POST,OPTIONS');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+  res.sendStatus(204);
+});
+
 app.use(express.static(__dirname));
 
 const products = [
@@ -99,7 +113,25 @@ app.get('/api/products', (req, res) => {
 });
 
 app.post('/api/checkout', (req, res) => {
-  const { items } = req.body;
+  const { items } = req.body || {};
+  if (!Array.isArray(items) || items.length === 0) {
+    return res.status(400).json({
+      success: false,
+      message: 'Checkout failed: cart items are missing or invalid.'
+    });
+  }
+
+  const invalidItem = items.find(
+    (item) => typeof item.price !== 'number' || typeof item.quantity !== 'number'
+  );
+
+  if (invalidItem) {
+    return res.status(400).json({
+      success: false,
+      message: 'Checkout failed: invalid item data provided.'
+    });
+  }
+
   const total = items.reduce((sum, item) => sum + item.price * item.quantity, 0);
 
   res.json({

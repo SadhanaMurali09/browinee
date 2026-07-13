@@ -6,6 +6,28 @@ const navbar = document.querySelector(".navbar");
 const productsContainer = document.getElementById("products-container");
 const checkoutBtn = document.querySelector(".checkout-btn");
 
+const API_HOSTS = ['http://localhost:3000', 'http://127.0.0.1:3000'];
+
+async function requestApi(path, options = {}) {
+  let lastError;
+
+  for (const host of API_HOSTS) {
+    try {
+      const response = await fetch(`${host}${path}`, options);
+      if (!response.ok) {
+        const errorData = await response.json().catch(() => null);
+        const message = errorData?.message || `${response.status} ${response.statusText}`;
+        throw new Error(message);
+      }
+      return response;
+    } catch (error) {
+      lastError = error;
+    }
+  }
+
+  throw lastError;
+}
+
 let cartItems = [];
 let products = [
   {
@@ -217,7 +239,7 @@ function showToast(message) {
 
 async function loadProducts() {
   try {
-    const response = await fetch("/api/products");
+    const response = await requestApi('/api/products');
     const data = await response.json();
     if (Array.isArray(data) && data.length > 0) {
       products = data;
@@ -238,7 +260,13 @@ function initCart() {
 
       event.preventDefault();
       const productId = Number(button.dataset.productId);
-      const selectedProduct = products.find((product) => product.id === productId);
+      let selectedProduct = products.find((product) => product.id === productId);
+
+      if (!selectedProduct) {
+        const productCard = button.closest(".product-card");
+        const productName = productCard?.querySelector("h3")?.innerText;
+        selectedProduct = products.find((product) => product.name === productName);
+      }
 
       if (selectedProduct) {
         addToCart(selectedProduct);
@@ -263,7 +291,7 @@ function initCart() {
       }
 
       try {
-        const response = await fetch("/api/checkout", {
+        const response = await requestApi('/api/checkout', {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ items: cartItems })
@@ -275,7 +303,12 @@ function initCart() {
         renderCart();
       } catch (error) {
         console.error("Checkout failed:", error);
-        showToast("Checkout failed. Please try again.");
+        const message = error.message || "Checkout failed. Please try again.";
+        if (message.includes('Failed to fetch') || message.includes('NetworkError')) {
+          showToast('Backend unavailable. Start Node with npm start and open http://127.0.0.1:3000');
+        } else {
+          showToast(message);
+        }
       }
     });
   }

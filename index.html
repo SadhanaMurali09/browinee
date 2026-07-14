@@ -37,11 +37,13 @@
                 <li><a href="#features">Features</a></li>
                 <li><a href="#shop">Shop</a></li>
                 <li><a href="#about">About</a></li>
+                <li><a id="profile-link" href="frontend/profile.html">Profile</a></li>
+                <li><a id="auth-link" href="frontend/auth.html">Login</a></li>
             </ul>
             <div class="nav-icons">
                 <label for="cart-toggle-check" class="cart-btn">
                     <i class="ph ph-shopping-cart"></i>
-                    <span class="cart-badge">2</span>
+                    <span class="cart-badge">0</span>
                 </label>
                 <label for="mobile-menu-check" class="mobile-menu-btn">
                     <i class="ph ph-list"></i>
@@ -121,6 +123,27 @@
             <span class="subtitle">Our Selection</span>
             <h2>The Brownie Collection</h2>
             <p>Discover our range of mouth-watering brownie flavors.</p>
+        </div>
+        <div class="store-controls container">
+            <div class="search-group">
+                <i class="ph ph-magnifying-glass"></i>
+                <input type="text" id="search-input" placeholder="Search brownies" />
+            </div>
+            <div class="filter-group">
+                <select id="category-filter">
+                    <option value="all">All Categories</option>
+                    <option value="classic">Classic</option>
+                    <option value="fudge">Fudge</option>
+                    <option value="nuts">Nuts</option>
+                    <option value="cookies">Cookies</option>
+                    <option value="premium">Premium</option>
+                </select>
+                <label class="price-range" for="price-filter">
+                    <span>Price</span>
+                    <input type="range" id="price-filter" min="4" max="8" step="0.5" value="8" />
+                    <span id="price-value">Up to ₹8.00</span>
+                </label>
+            </div>
         </div>
         <div class="products-grid container" id="products-container">
 

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Browniee | Admin</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../styles.css" />
+</head>
+<body>
+  <div class="admin-shell">
+    <div class="auth-card">
+      <h2>Admin Login</h2>
+      <p>Access the Browniee control center.</p>
+      <form id="admin-form" class="auth-form">
+        <div class="field">
+          <label for="admin-email">Email</label>
+          <input id="admin-email" type="email" placeholder="admin@browniee.com" required />
+        </div>
+        <div class="field">
+          <label for="admin-password">Password</label>
+          <input id="admin-password" type="password" placeholder="Enter password" required />
+        </div>
+        <button class="btn btn-primary w-100" type="submit">Open Dashboard</button>
+      </form>
+      <div id="admin-message" class="auth-message"></div>
+    </div>
+  </div>
+  <script src="../script.js"></script>
+</body>
+</html>

@@ -1199,6 +1199,148 @@ section {
   right: 30px;
 }
 
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.auth-shell, .admin-shell, .admin-dashboard {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: 2rem;
+  background: radial-gradient(circle at top, rgba(226,173,82,0.1), transparent 45%), var(--color-bg-base);
+}
+
+.auth-card {
+  width: min(100%, 560px);
+  background: rgba(15,10,7,0.9);
+  border: 1px solid var(--glass-border);
+  border-radius: 24px;
+  padding: 2rem;
+  box-shadow: var(--shadow-card);
+}
+
+.auth-form .field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.auth-form input, .auth-form select, .auth-form textarea {
+  padding: 0.9rem 1rem;
+  border-radius: 14px;
+  border: 1px solid var(--glass-border);
+  background: rgba(255,255,255,0.04);
+  color: var(--color-text-primary);
+}
+
+.auth-form input:focus, .auth-form select:focus, .auth-form textarea:focus {
+  outline: 2px solid rgba(226,173,82,0.3);
+  border-color: var(--color-gold-base);
+}
+
+.payment-options {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.payment-option {
+  cursor: pointer;
+}
+
+.payment-option input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.payment-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  padding: 1rem 1rem;
+  border: 1px solid var(--glass-border);
+  border-radius: 16px;
+  background: rgba(255,255,255,0.04);
+  transition: all 0.2s ease;
+}
+
+.payment-option input:checked + .payment-card {
+  border-color: var(--color-gold-base);
+  background: linear-gradient(135deg, rgba(226,173,82,0.2), rgba(255,255,255,0.06));
+  box-shadow: inset 0 0 0 1px rgba(226,173,82,0.16);
+}
+
+.payment-icon {
+  font-size: 1.2rem;
+}
+
+.payment-title {
+  font-weight: 700;
+  color: var(--color-text-primary);
+}
+
+.payment-desc {
+  font-size: 0.9rem;
+  color: var(--color-text-secondary);
+}
+
+.summary-box {
+  margin: 1rem 0 1.25rem;
+  padding: 1rem 1.1rem;
+  border-radius: 16px;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid var(--glass-border);
+}
+
+.summary-box h3 {
+  margin: 0 0 0.75rem;
+  font-size: 1rem;
+  color: var(--color-text-primary);
+}
+
+.auth-actions, .summary-total, .store-controls, .filter-group {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.auth-switcher { margin-top: 1rem; color: var(--color-text-secondary); }
+.auth-switcher a { color: var(--color-gold-base); }
+.auth-message { margin-top: 1rem; min-height: 1.4rem; color: var(--color-gold-base); }
+.auth-message.error { color: #ff9a9a; }
+.auth-message.success { color: #8cffb0; }
+.hidden { display: none !important; }
+.summary-list { padding-left: 1rem; color: var(--color-text-secondary); margin: 0 0 0.75rem; }
+.summary-list li { margin-bottom: 0.4rem; }
+.summary-total { justify-content: space-between; font-weight: 600; color: var(--color-text-primary); }
+.stats-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; margin: 1rem 0; }
+.stat-card { padding: 1rem; border-radius: 16px; background: rgba(255,255,255,0.04); }
+.wishlist-btn {
+  position: absolute;
+  top: 1rem; right: 1rem;
+  border: none;
+  background: rgba(6,4,3,0.75);
+  color: white;
+  width: 40px; height: 40px;
+  border-radius: 50%;
+  display: grid; place-items: center;
+}
+.wishlist-btn.active { color: #ff6b6b; }
+.store-controls { justify-content: space-between; margin: 2rem auto; flex-wrap: wrap; }
+.search-group, .filter-group { display: flex; gap: 0.75rem; align-items: center; background: rgba(255,255,255,0.05); padding: 0.75rem 1rem; border-radius: 999px; }
+.search-group input, .filter-group select, .price-range input { background: transparent; border: none; color: var(--color-text-primary); }
+.price-range { display: flex; gap: 0.5rem; align-items: center; color: var(--color-text-secondary); }
+.product-card { position: relative; }
 /* Product Animation */
 .product-card {
   opacity: 0;

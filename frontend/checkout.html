@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Browniee | Checkout</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../styles.css" />
+</head>
+<body>
+  <div class="auth-shell">
+    <div class="auth-card">
+      <h2>Secure checkout</h2>
+      <p>Choose a payment mode and confirm your brownie order.</p>
+      <form id="checkout-form" class="auth-form">
+        <div class="field">
+          <label>Payment Method</label>
+          <div class="payment-options" role="radiogroup" aria-label="Payment methods">
+            <label class="payment-option">
+              <input type="radio" name="payment-method" value="cod" checked />
+              <span class="payment-card">
+                <span class="payment-icon">💵</span>
+                <span class="payment-title">Cash on Delivery</span>
+                <span class="payment-desc">Pay when your brownies reach you.</span>
+              </span>
+            </label>
+            <label class="payment-option">
+              <input type="radio" name="payment-method" value="upi" />
+              <span class="payment-card">
+                <span class="payment-icon">📱</span>
+                <span class="payment-title">UPI</span>
+                <span class="payment-desc">Quick scan and pay instantly.</span>
+              </span>
+            </label>
+            <label class="payment-option">
+              <input type="radio" name="payment-method" value="card" />
+              <span class="payment-card">
+                <span class="payment-icon">💳</span>
+                <span class="payment-title">Card</span>
+                <span class="payment-desc">Secure credit or debit card payment.</span>
+              </span>
+            </label>
+          </div>
+          <select id="payment-method" class="sr-only">
+            <option value="cod">Cash on Delivery</option>
+            <option value="upi">UPI</option>
+            <option value="card">Credit / Debit Card</option>
+          </select>
+        </div>
+        <div class="summary-box">
+          <h3>Order Summary</h3>
+          <ul id="checkout-summary" class="summary-list"></ul>
+          <div class="summary-total">Total: <strong id="checkout-total">₹0.00</strong></div>
+        </div>
+        <button class="btn btn-primary w-100" type="submit">Place Order</button>
+      </form>
+      <div id="checkout-message" class="auth-message"></div>
+    </div>
+  </div>
+  <script src="../script.js"></script>
+</body>
+</html>

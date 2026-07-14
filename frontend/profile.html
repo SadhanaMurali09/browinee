@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Browniee | Profile</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../styles.css" />
+</head>
+<body>
+  <div class="auth-shell">
+    <div class="auth-card profile-card">
+      <h2>Your profile</h2>
+      <p>Review your details and recent brownie orders.</p>
+      <form id="profile-form" class="auth-form">
+        <div class="field">
+          <label for="profile-name">Full Name</label>
+          <input id="profile-name" type="text" required />
+        </div>
+        <div class="field">
+          <label for="profile-email">Email</label>
+          <input id="profile-email" type="email" disabled />
+        </div>
+        <div class="field">
+          <label for="profile-phone">Phone</label>
+          <input id="profile-phone" type="text" />
+        </div>
+        <div class="field">
+          <label for="profile-address">Address</label>
+          <textarea id="profile-address" rows="3"></textarea>
+        </div>
+        <button class="btn btn-primary w-100" type="submit">Save Profile</button>
+      </form>
+      <button id="logout-button" class="btn btn-secondary w-100">Logout</button>
+      <h3>Recent Orders</h3>
+      <ul id="orders-list" class="summary-list"></ul>
+      <div id="profile-message" class="auth-message"></div>
+    </div>
+  </div>
+  <script src="../script.js"></script>
+</body>
+</html>

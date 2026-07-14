@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Browniee | Auth</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../styles.css" />
+</head>
+<body>
+  <div class="auth-shell">
+    <div class="auth-card">
+      <h2 id="auth-title">Welcome back</h2>
+      <p id="auth-subtitle">Sign in to continue your brownie journey.</p>
+      <form id="auth-form" class="auth-form">
+        <div id="name-group" class="field hidden">
+          <label for="fullName">Full Name</label>
+          <input id="fullName" name="fullName" type="text" placeholder="Enter full name" />
+        </div>
+        <div class="field">
+          <label for="email">Email</label>
+          <input id="email" name="email" type="email" placeholder="you@example.com" required />
+        </div>
+        <div class="field">
+          <label for="password">Password</label>
+          <input id="password" name="password" type="password" placeholder="Enter password" required />
+        </div>
+        <div id="confirm-group" class="field hidden">
+          <label for="confirmPassword">Confirm Password</label>
+          <input id="confirmPassword" name="confirmPassword" type="password" placeholder="Confirm password" />
+        </div>
+        <div class="auth-actions">
+          <button class="btn btn-primary w-100" type="submit" id="auth-submit">Login</button>
+        </div>
+      </form>
+      <p class="auth-switcher" id="auth-switcher">Need an account? <a href="#" data-mode="signup">Create one</a></p>
+      <p class="auth-switcher"><a href="forgot-password.html">Forgot password?</a></p>
+      <div id="auth-message" class="auth-message"></div>
+    </div>
+  </div>
+  <script src="../script.js"></script>
+</body>
+</html>

@@ -19,6 +19,24 @@ const API_HOSTS = [
 ].filter(Boolean);
 const TOKEN_KEY = 'browniee-token';
 
+function normalizeImagePath(path) {
+  if (!path) return '';
+  if (/^https?:\/\//i.test(path) || path.startsWith('data:') || path.startsWith('blob:')) {
+    return path;
+  }
+
+  const cleanedPath = path.replace(/\\/g, '/');
+  const trimmedPath = cleanedPath.startsWith('/') ? cleanedPath.slice(1) : cleanedPath;
+  const encodedSegments = trimmedPath.split('/').map((segment) => {
+    try {
+      return encodeURIComponent(decodeURIComponent(segment));
+    } catch (error) {
+      return encodeURIComponent(segment);
+    }
+  });
+  return `/${encodedSegments.join('/')}`;
+}
+
 function getToken() {
   return localStorage.getItem(TOKEN_KEY) || '';
 }
@@ -67,18 +85,18 @@ async function requestApi(path, options = {}) {
 
 let cartItems = JSON.parse(localStorage.getItem('browniee-cart') || '[]');
 let products = [
-  { id: 1, name: 'Classic Chocolate Brownie', price: 4.5, image: '/assets/classic chocolate browine.webp', alt: 'Classic Chocolate Brownie', category: 'classic' },
-  { id: 2, name: 'Fudge Brownie', price: 4.99, image: '/assets/fudgebrownies.webp', alt: 'Fudge Brownie', category: 'fudge' },
-  { id: 3, name: 'Walnut Brownie', price: 5.5, image: '/assets/walnut_brownie_01.png', alt: 'Walnut Brownie', category: 'nuts' },
-  { id: 4, name: 'Oreo Brownie', price: 5.25, image: '/assets/oreo browinee.jpg', alt: 'Oreo Brownie', category: 'cookies' },
-  { id: 5, name: 'Caramel Brownie', price: 5.75, image: '/assets/caremel browie.jpg', alt: 'Caramel Brownie', category: 'caramel' },
+  { id: 1, name: 'Classic Chocolate Brownie', price: 4.5, image: normalizeImagePath('/assets/classic chocolate browine.webp'), alt: 'Classic Chocolate Brownie', category: 'classic' },
+  { id: 2, name: 'Fudge Brownie', price: 4.99, image: normalizeImagePath('/assets/fudgebrownies.webp'), alt: 'Fudge Brownie', category: 'fudge' },
+  { id: 3, name: 'Walnut Brownie', price: 5.5, image: normalizeImagePath('/assets/walnut_brownie_01.png'), alt: 'Walnut Brownie', category: 'nuts' },
+  { id: 4, name: 'Oreo Brownie', price: 5.25, image: normalizeImagePath('/assets/oreo browinee.jpg'), alt: 'Oreo Brownie', category: 'cookies' },
+  { id: 5, name: 'Caramel Brownie', price: 5.75, image: normalizeImagePath('/assets/caremel browie.jpg'), alt: 'Caramel Brownie', category: 'caramel' },
   { id: 6, name: 'Red Velvet Brownie', price: 6.0, image: 'https://images.unsplash.com/photo-1550617931-e17a7b70dce2?q=80&w=600&auto=format&fit=crop', alt: 'Red Velvet Brownie', category: 'premium' },
   { id: 7, name: 'Nutella Brownie', price: 5.9, image: 'https://images.unsplash.com/photo-1606313564200-e75d5e30476c?q=80&w=600&auto=format&fit=crop&crop=bottom', alt: 'Nutella Brownie', category: 'premium' },
   { id: 8, name: 'Cheesecake Brownie', price: 6.25, image: 'https://images.unsplash.com/photo-1515037893149-de7f840978e2?q=80&w=600&auto=format&fit=crop', alt: 'Cheesecake Brownie', category: 'premium' },
   { id: 9, name: 'Peanut Butter Brownie', price: 5.5, image: 'https://images.unsplash.com/photo-1624353365286-3f8d62daad51?q=80&w=600&auto=format&fit=crop', alt: 'Peanut Butter Brownie', category: 'nuts' },
-  { id: 10, name: 'Dark Chocolate Brownie', price: 4.75, image: '/assets/darkchocolate.webp', alt: 'Dark Chocolate Brownie', category: 'classic' },
-  { id: 11, name: 'Lotus Biscoff Brownie', price: 6.5, image: '/assets/lotus biscoff browinee.webp', alt: 'Lotus Biscoff Brownie', category: 'premium' },
-  { id: 12, name: "S'mores Brownie", price: 5.95, image: "/assets/s'mores browine.webp", alt: "S'mores Brownie", category: 'classic' }
+  { id: 10, name: 'Dark Chocolate Brownie', price: 4.75, image: normalizeImagePath('/assets/darkchocolate.webp'), alt: 'Dark Chocolate Brownie', category: 'classic' },
+  { id: 11, name: 'Lotus Biscoff Brownie', price: 6.5, image: normalizeImagePath('/assets/lotus biscoff browinee.webp'), alt: 'Lotus Biscoff Brownie', category: 'premium' },
+  { id: 12, name: "S'mores Brownie", price: 5.95, image: normalizeImagePath("/assets/s'mores browine.webp"), alt: "S'mores Brownie", category: 'classic' }
 ];
 let wishlist = JSON.parse(localStorage.getItem('browniee-wishlist') || '[]');
 
@@ -111,7 +129,7 @@ function renderProducts(productList) {
   productsContainer.innerHTML = productList.map((product) => `
     <div class="product-card">
       <div class="product-image">
-        <img src="${product.image}" alt="${product.alt}">
+        <img src="${normalizeImagePath(product.image)}" alt="${product.alt}">
         <div class="product-overlay">
           <button class="btn btn-primary add-to-cart-btn" data-product-id="${product.id}">
             <i class="ph ph-shopping-cart"></i> Add to Cart
@@ -148,7 +166,7 @@ function renderCart() {
 
   cartItemsContainer.innerHTML = cartItems.map((item) => `
     <div class="cart-item">
-      <img src="${item.image}" alt="${item.alt}">
+      <img src="${normalizeImagePath(item.image)}" alt="${item.alt}">
       <div class="cart-item-details">
         <h4>${item.name}</h4>
         <span class="cart-item-price">${formatCurrency(item.price)}</span>

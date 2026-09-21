@@ -22,9 +22,12 @@ app.options('*', (req, res) => {
   res.sendStatus(204);
 });
 
-app.use('/api', apiRoutes);
-app.use(express.static(__dirname));
+// Serve static files first (images, CSS, JS, assets/)
+app.use(express.static(path.join(__dirname)));
 
+app.use('/api', apiRoutes);
+
+// Only serve index.html for non-file requests (actual page navigation)
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, 'index.html'));
 });

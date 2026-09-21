@@ -16,7 +16,8 @@ async function connectDatabase() {
       database: process.env.DB_NAME || 'browniee',
       waitForConnections: true,
       connectionLimit: 10,
-      queueLimit: 0
+      queueLimit: 0,
+      multipleStatements: true
     });
 
     await pool.query('SELECT 1');

@@ -3,18 +3,18 @@ const jwt = require('jsonwebtoken');
 const JWT_SECRET = process.env.JWT_SECRET || 'brownie-secret';
 
 const defaultProducts = [
-  { id: 1, name: 'Classic Chocolate Brownie', price: 4.5, category: 'classic', image: '/assets/classic chocolate browine.webp', description: 'Rich cocoa with a fudgy center.', stock: 24 },
+  { id: 1, name: 'Classic Chocolate Brownie', price: 4.5, category: 'classic', image: '/assets/classic_chocolate_brownie.webp', description: 'Rich cocoa with a fudgy center.', stock: 24 },
   { id: 2, name: 'Fudge Brownie', price: 4.99, category: 'fudge', image: '/assets/fudgebrownies.webp', description: 'Extra fudgy and glossy.', stock: 18 },
   { id: 3, name: 'Walnut Brownie', price: 5.5, category: 'nuts', image: '/assets/walnut_brownie_01.png', description: 'Crunchy walnut garnish.', stock: 15 },
-  { id: 4, name: 'Oreo Brownie', price: 5.25, category: 'cookies', image: '/assets/oreo browinee.jpg', description: 'Creamy Oreo crumb topping.', stock: 12 },
-  { id: 5, name: 'Caramel Brownie', price: 5.75, category: 'caramel', image: '/assets/caremel browie.jpg', description: 'Salted caramel swirl.', stock: 10 },
+  { id: 4, name: 'Oreo Brownie', price: 5.25, category: 'cookies', image: '/assets/oreo_brownie.jpg', description: 'Creamy Oreo crumb topping.', stock: 12 },
+  { id: 5, name: 'Caramel Brownie', price: 5.75, category: 'caramel', image: '/assets/caramel_brownie.jpg', description: 'Salted caramel swirl.', stock: 10 },
   { id: 6, name: 'Red Velvet Brownie', price: 6, category: 'premium', image: 'https://images.unsplash.com/photo-1550617931-e17a7b70dce2?q=80&w=600&auto=format&fit=crop', description: 'Velvety cocoa with cream cheese glaze.', stock: 8 },
   { id: 7, name: 'Nutella Brownie', price: 5.9, category: 'premium', image: 'https://images.unsplash.com/photo-1606313564200-e75d5e30476c?q=80&w=600&auto=format&fit=crop&crop=bottom', description: 'Silky Nutella swirl with a soft center.', stock: 9 },
   { id: 8, name: 'Cheesecake Brownie', price: 6.25, category: 'premium', image: 'https://images.unsplash.com/photo-1515037893149-de7f840978e2?q=80&w=600&auto=format&fit=crop', description: 'Rich chocolate layered with cheesecake.', stock: 7 },
   { id: 9, name: 'Peanut Butter Brownie', price: 5.5, category: 'nuts', image: 'https://images.unsplash.com/photo-1624353365286-3f8d62daad51?q=80&w=600&auto=format&fit=crop', description: 'Creamy peanut butter ribbons baked in.', stock: 11 },
   { id: 10, name: 'Dark Chocolate Brownie', price: 4.75, category: 'classic', image: '/assets/darkchocolate.webp', description: 'Deep cocoa flavor with a glossy top.', stock: 14 },
-  { id: 11, name: 'Lotus Biscoff Brownie', price: 6.5, category: 'premium', image: '/assets/lotus biscoff browinee.webp', description: 'Biscoff spice and caramelized sweetness.', stock: 6 },
-  { id: 12, name: "S'mores Brownie", price: 5.95, category: 'classic', image: "/assets/s'mores browine.webp", description: 'Marshmallow, graham cracker, and chocolate.', stock: 8 }
+  { id: 11, name: 'Lotus Biscoff Brownie', price: 6.5, category: 'premium', image: '/assets/lotus_biscoff_brownie.webp', description: 'Biscoff spice and caramelized sweetness.', stock: 6 },
+  { id: 12, name: "S'mores Brownie", price: 5.95, category: 'classic', image: '/assets/smores_brownie.webp', description: 'Marshmallow, graham cracker, and chocolate.', stock: 8 }
 ];
 
 const state = {
